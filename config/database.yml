@@ -1,0 +1,16 @@
+common: &common
+  adapter: postgresql
+
+development:
+  <<: *common
+  database: ono_dev
+  username: kakopczynski
+  password: password
+
+test:
+  <<: *common
+  database: ono_test
+
+# production:
+#   <<: *common
+#   database: ono_prod
