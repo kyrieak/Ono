@@ -1,9 +1,13 @@
 Ono::Application.routes.draw do
+  get "links/new"
+  get "links/create"
+  get "links/destroy"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  # root 'welcome#index'
+  
+  root 'links#new'
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
