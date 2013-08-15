@@ -15,3 +15,4 @@
 //= require turbolinks
 //= require bootstrap.js
 //= require links.js
+//= require key.js

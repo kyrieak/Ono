@@ -1,7 +1,28 @@
 # Place all the behaviors and hooks related to the matching controller here.
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
+
 $(document).ready ->
+
+  prevWord = ""
+  prevTag = $.find('.onoma_field[visibility="visible"]')
+
+  console.log("last tag is:")
+  console.log(prevTag)
+
+  $("#wordlist").delegate(".keyword", "click", () ->
+    console.log("delegated")
+    
+    currentWord = $(this).attr("value")
+    currentTag = $.find(".onoma_field[value=" + currentWord + "]")
+
+    if (prevWord != currentWord)
+      $(prevTag).css("visibility", "hidden")
+      $(currentTag).css("visibility", "visible")
+      prevWord = currentWord
+      prevTag = currentTag
+  )
+
   $("#make_list").click (e) =>
     e.preventDefault()
 
@@ -16,6 +37,15 @@ $(document).ready ->
         console.log("msg * success")
       error: ->
         console.log("msg * error")
+
+  $(".span6.keyword").click (e) ->
+    currentWord = $(this).attr("value")
+    targetTag = $(this).next(":hidden[value=" + currentWord + "]")
+    console.log(targetTag)
+
+  formToggle = (word) ->
+    targetTag = $.find(":hidden[value=" + word + "]")
+    console.log(targetTag)
 
   urlWithParams = (url, stringKey, stringVal) ->
     return url.concat("?")
@@ -37,5 +67,6 @@ $(document).ready ->
         uniqueWords.push(word)
 
     return uniqueWords
+
 
   
