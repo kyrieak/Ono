@@ -1,7 +1,9 @@
 Ono::Application.routes.draw do
-  get "links/new"
-  get "links/create"
-  get "links/destroy"
+  
+  resources :links, :only => [:new, :create, :destroy, :word_list]
+  
+  get 'keys' => 'key#index'
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
