@@ -6,3 +6,7 @@
 .onoma_field {
   visibility: hidden;
 }
+
+span.word {
+  padding-left: 5%;
+}

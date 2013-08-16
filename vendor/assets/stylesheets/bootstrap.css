@@ -34,6 +34,33 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+
+.close {
+  float: left;
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 20px;
+  color: #000000;
+  text-shadow: 0 1px 0 #ffffff;
+  opacity: 0.2;
+  filter: alpha(opacity=20);
+}
+.close:hover,
+.close:focus {
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+button.close {
+  padding: 0;
+  cursor: pointer;
+  background: transparent;
+  border: 0;
+  -webkit-appearance: none;
+}
+
 article,
 aside,
 details,
@@ -1290,6 +1317,7 @@ a:focus {
   }
   .container {
     width: auto;
+    margin: 0px, auto;
   }
   .row-fluid {
     width: 100%;

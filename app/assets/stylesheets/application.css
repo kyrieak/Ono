@@ -15,4 +15,9 @@
 
 textarea {
   font-family: inherit;
+  width: 100%;
+}
+
+button#make_list {
+  margin-top: 6%;
 }

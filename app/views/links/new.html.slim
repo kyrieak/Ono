@@ -1,6 +1,6 @@
-p
-  = text_area_tag("doc_area", "paste some text here", rows: 10, cols: 25)
-
-= button_tag("Refresh List", :id => "make_list")
-
-div[id="wordlist"]
+.row
+  .span4
+    = text_area_tag("doc_area", "paste some text here", rows: 10)
+    br
+    = button_tag("Refresh List", :id => "make_list")
+  .span8[id="wordlist"]

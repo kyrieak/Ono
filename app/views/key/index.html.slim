@@ -1,7 +1,10 @@
 .row
   - @unique_words.each do |word|
-    .span6.keyword[value=word]
-      = word
-    .span6.onoma_field[value=word]
+    .span4.keyword[value=word]
+      button.close
+        | &times;
+      span.word
+        = word
+    .span4.onoma_field[value=word]
       = text_field(:onoma, :name)
       = button_tag("make a link")
