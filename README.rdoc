@@ -1,3 +1,12 @@
+if you're using rvm, you can add a .rvmrc file to the root directory
+and paste:
+
+rvm --create use X.X.X-pX@gemsetname
+
+replace X and gemsetname with the appropriate ruby version
+and gemset name. I am using 2.0.0, which is hopefully compatible
+with 1.X versions, if you are not using 2+.
+
 == README
 
 This README would normally document whatever steps are necessary to get the
