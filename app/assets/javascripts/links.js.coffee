@@ -4,25 +4,29 @@
 
 $(document).ready ->
 
-  prevWord = ""
-  prevTag = $.find('.onoma_field[visibility="visible"]')
+  # Controller --------------------------------------------------------
+  
+  class ViewController
+    constructor: () ->
+      @prevWord = ""
+      @currWord = ""
 
-  console.log("last tag is:")
-  console.log(prevTag)
+    getFieldTag: (word) ->
+      return $.find(".onoma_field[value=" + word + "]")
 
-  $("#wordlist").delegate(".keyword", "click", () ->
-    console.log("delegated")
-    
-    currentWord = $(this).attr("value")
-    currentTag = $.find(".onoma_field[value=" + currentWord + "]")
+    toggleFields: () ->
+      $(@getFieldTag(@prevWord)).css("visibility", "hidden")
+      $(@getFieldTag(@currWord)).css("visibility", "visible")
+      @prevWord = @currWord
 
-    if (prevWord != currentWord)
-      $(prevTag).css("visibility", "hidden")
-      $(currentTag).css("visibility", "visible")
-      prevWord = currentWord
-      prevTag = currentTag
-  )
+    getTextVal: () ->
+      return $("#doc_area").val()
 
+  viewCon = new ViewController()
+
+
+  # Binding -----------------------------------------------------------
+  
   $("#make_list").click (e) =>
     e.preventDefault()
 
@@ -38,14 +42,15 @@ $(document).ready ->
       error: ->
         console.log("msg * error")
 
-  $(".span6.keyword").click (e) ->
-    currentWord = $(this).attr("value")
-    targetTag = $(this).next(":hidden[value=" + currentWord + "]")
-    console.log(targetTag)
 
-  formToggle = (word) ->
-    targetTag = $.find(":hidden[value=" + word + "]")
-    console.log(targetTag)
+  $("#wordlist").delegate(".keyword", "click", () ->    
+    viewCon.currWord = $(this).attr("value")
+    if (viewCon.prevWord != viewCon.currWord)
+      viewCon.toggleFields()
+  )
+
+
+  # Methods ----------------------------------------------------------
 
   urlWithParams = (url, stringKey, stringVal) ->
     return url.concat("?")
@@ -53,20 +58,12 @@ $(document).ready ->
               .concat("=")
               .concat(stringVal)
 
-  getWordList = () ->
-    text = $("#doc_area").val()
-    words = getUniqueWords(text)
-    return JSON.stringify(words)
-
-  getUniqueWords = (text) ->
-    textWords = text.split(/[\s]+/)
+  getWordList = (text) ->
+    textWords = viewCon.getTextVal().split(/[\s]+/)
     uniqueWords = new Array()
 
     for word in textWords
       if (uniqueWords.indexOf(word) == -1)
         uniqueWords.push(word)
 
-    return uniqueWords
-
-
-  
+    return JSON.stringify(uniqueWords)
