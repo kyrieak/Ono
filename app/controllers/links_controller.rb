@@ -16,4 +16,11 @@ class LinksController < ApplicationController
 
   def destroy
   end
+
+  private
+
+  def link_params
+    params.require(:link).permit(Link.attr_params)
+  end
+  
 end

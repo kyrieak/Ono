@@ -1,5 +1,7 @@
 Ono::Application.routes.draw do
   
+  get "onomas/index"
+  get "onomas/create"
   resources :links, :only => [:new, :create, :destroy, :word_list]
   
   get 'keys' => 'key#index'

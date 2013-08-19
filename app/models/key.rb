@@ -1,7 +1,15 @@
 class Key < ActiveRecord::Base
-  attr_accessible :word, :language_id
-  
+
   belongs_to :language
   has_many :links
   has_many :onoma, :through => :links
+
+  def self.attr_params
+    [
+      :id,
+      :word,
+      :language_attributes => [:id, :name]
+    ]
+  end
+
 end

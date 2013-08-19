@@ -7,6 +7,12 @@ class KeyController < ApplicationController
       format.html{ render :index, :layout => false }
     end
 
-  end #index
+  end
 
-end #class
+  private
+
+  def key_params
+    params.require(:key).permit(Key.attr_params)
+  end
+
+end
