@@ -1,9 +1,9 @@
 .row
   - @unique_words.each do |word|
-    .span4.keyword[value=word]
+    .span4
       button.close
         | &times;
-      span.word
+      span.keyword[value=word]
         = word
     .span4.onoma_field[value=word]
       = text_field(:onoma, :name)
