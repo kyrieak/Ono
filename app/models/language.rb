@@ -1,5 +1,5 @@
 class Language < ActiveRecord::Base
-  attr_accessible :name
+  include ActiveModel::ForbiddenAttributesProtection
 
   has_many :onomas
   has_many :keys

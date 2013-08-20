@@ -4,12 +4,14 @@ common: &common
 development:
   <<: *common
   database: ono_dev
-  username: kakopczynski
+  username: onomatopoeia
   password: password
 
 test:
   <<: *common
   database: ono_test
+  username: onomatopoeia
+  password: password
 
 # production:
 #   <<: *common

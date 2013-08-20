@@ -1,5 +1,5 @@
 class Onoma < ActiveRecord::Base
-  attr_accessible :name, :language_id
+  include ActiveModel::ForbiddenAttributesProtection
   
   belongs_to :language
   has_many :links

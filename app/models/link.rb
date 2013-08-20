@@ -1,5 +1,5 @@
 class Link < ActiveRecord::Base
-  attr_accessible :key_id, :onoma_id
+  include ActiveModel::ForbiddenAttributesProtection
 
   belongs_to :key
   belongs_to :onoma
