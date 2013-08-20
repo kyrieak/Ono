@@ -17,9 +17,8 @@ class Key < ActiveRecord::Base
   end
 
   def unique_attributes
-    puts Key.where({ :word => word, :language => language }).inspect
     if Key.where({ :word => word, :language => language }).count > 0
-      errors.add(:word, "there is an existing record with the same attributes")
+      errors.add(:word, "#{word} is already in our #{language.name} dictionary")
     end
   end
 
