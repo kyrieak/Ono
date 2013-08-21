@@ -37,4 +37,22 @@ describe Key do
   
   end # end of #create
 
+  describe "#duplicate" do
+    
+    before :each do
+      Key.create(:word => "jibber-jabber", :language => @jibberish)
+    end
+
+    it "returns true if a record with matching attributes is found" do
+      @key = Key.new(:word => "jibber-jabber", :language => @jibberish)
+      @key.duplicate?.should be_true
+    end
+
+    it "returns false if no record with matching attributes is found" do
+      @key = Key.new(:word => "mumbo", :language => @jibberish)
+      @key.duplicate?.should be_false
+    end
+
+  end
+
 end # end of Key

@@ -12,6 +12,25 @@ describe Link do
 
   describe "#create" do
 
+    context "validates presence of :key" do
+      it "is invalid when :key is nil" do
+        bad_params = { :key => nil,
+                       :onoma => @onoma }
+        Link.new(bad_params).valid?.should be_false
+        Link.create(bad_params)
+        Link.count.should == 0
+      end
+
+      it "is valid when :key is present" do
+        good_params = { :key => @key,
+                        :onoma => @onoma }
+        Link.new(good_params).valid?.should be_true
+        Link.create(good_params)
+        Link.count.should == 1
+      end
+
+    end # end of context    
+
     context "validates presence of :onoma" do
       it "is invalid when :onoma is nil" do
         bad_params = { :key => @key,

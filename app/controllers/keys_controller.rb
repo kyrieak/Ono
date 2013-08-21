@@ -1,4 +1,4 @@
-class KeyController < ApplicationController
+class KeysController < ApplicationController
   
   def index
     @unique_words = JSON.parse(params["list"])
@@ -7,6 +7,15 @@ class KeyController < ApplicationController
       format.html{ render :index, :layout => false }
     end
 
+  end
+
+  def create
+    @key = Key.new(params[:key])
+    if @key.duplicate?
+      render "index"
+    else
+      @key.save
+    end
   end
 
   private

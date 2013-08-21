@@ -18,4 +18,8 @@ class Key < ActiveRecord::Base
     ]
   end
 
+  def duplicate?
+    Key.where(:word => word, :language_id => language_id).count > 0
+  end
+
 end
