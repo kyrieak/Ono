@@ -5,6 +5,11 @@ class Onoma < ActiveRecord::Base
   has_many :links
   has_many :keys, :through => :links
 
+  accepts_nested_attributes_for :language
+
+  validates :name, :presence => true
+  validates :language_id, :presence => true
+
   def self.attr_params
     [
       :id,

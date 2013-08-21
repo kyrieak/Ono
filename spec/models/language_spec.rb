@@ -37,8 +37,8 @@ describe Language do
       end
 
       it "valid on #create when :name is unique" do
-        Language.new(:name => "jibberish").valid?.should be_true
-        Language.create(:name => "jibberish")
+        Language.new(:name => "Jibberish").valid?.should be_true
+        Language.create(:name => "Jibberish")
         Language.count.should == 2
       end
 
