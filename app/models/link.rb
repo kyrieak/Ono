@@ -18,5 +18,9 @@ class Link < ActiveRecord::Base
       :onoma_attributes => [:id, :name, :language_id]
     ]
   end
+
+  def duplicate?
+    Link.where(:key_id => key, :onoma_id => onoma).count > 0
+  end
   
 end

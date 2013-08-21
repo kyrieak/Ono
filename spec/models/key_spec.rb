@@ -37,7 +37,7 @@ describe Key do
   
   end # end of #create
 
-  describe "#duplicate" do
+  describe "#duplicate?" do
     
     before :each do
       Key.create(:word => "jibber-jabber", :language => @jibberish)

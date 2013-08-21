@@ -17,5 +17,9 @@ class Onoma < ActiveRecord::Base
       :language_attributes => [:id, :name]
     ]
   end
+
+  def duplicate?
+    Onoma.where(:name => name, :language_id => language_id).count > 0
+  end
   
 end

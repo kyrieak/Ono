@@ -37,4 +37,22 @@ describe Onoma do
   
   end # end of #create
 
+  describe "#duplicate?" do
+
+    before :each do
+      Onoma.create(:name => "bop!", :language => @jibberish)
+    end
+
+    it "returns true if a record with matching attributes is found" do
+      @onoma = Onoma.new(:name => "bop!", :language => @jibberish)
+      @onoma.duplicate?.should be_true
+    end
+
+    it "returns false if no record with matching attributes is found" do
+      @onoma = Onoma.new(:name => "boppity", :language => @jibberish)
+      @onoma.duplicate?.should be_false
+    end
+
+  end # end of #duplicate
+
 end

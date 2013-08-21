@@ -52,4 +52,23 @@ describe Link do
   
   end # end of #create
 
+  describe "#duplicate?" do
+    
+    before :each do
+      Link.create(:key => @key, :onoma => @onoma)
+      @other_key = Key.create(:word => "jabber-jibber", :language => @jibberish)
+    end
+
+    it "returns true if a record with matching attributes is found" do
+      @link = Link.new(:key => @key, :onoma => @onoma)
+      @link.duplicate?.should be_true
+    end
+
+    it "returns false if no record with matching attributes is found" do
+      @link = Link.new(:key => @other_key, :onoma => @onoma)
+      @link.duplicate?.should be_false
+    end
+
+  end
+
 end
